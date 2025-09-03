@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>N.O.V.A - AI Assistant</title>
+    <style>
+        /* All the CSS code from before */
+        /* Adding the mute button styles */
+        .btn.muted {
+            background: rgba(255, 80, 80, 0.2);
+            color: #ff5050;
+            border-color: rgba(255, 80, 80, 0.3);
+        }
+        .btn.muted:hover {
+            background: rgba(255, 80, 80, 0.3);
+            box-shadow: 0 0 10px rgba(255, 80, 80, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <div class="logo-icon">N</div>
+                <h1>N.O.V.A</h1>
+            </div>
+            <div class="controls">
+                <button class="btn" id="mute-btn">
+                    <svg id="mute-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+                        <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                        <line x1="12" y1="19" x2="12" y2="23"></line>
+                        <line x1="8" y1="23" x2="16" y2="23"></line>
+                    </svg>
+                    Mute
+                </button>
+                <button class="btn" id="fullscreen-btn">Full Screen</button>
+            </div>
+        </header>
+        <!-- Rest of your HTML content -->
+    </div>
+
+    <script>
+        // Add this to your existing JavaScript
+        const muteBtn = document.getElementById('mute-btn');
+        const muteIcon = document.getElementById('mute-icon');
+        let isMuted = false;
+
+        muteBtn.addEventListener('click', () => {
+            isMuted = !isMuted;
+            
+            if (isMuted) {
+                // Stop any current speech
+                window.speechSynthesis.cancel();
+                
+                // Change button style
+                muteBtn.classList.add('muted');
+                muteBtn.innerHTML = `
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+                        <line x1="2" y1="2" x2="22" y2="22"></line>
+                        <path d="M18.89 13.23A7.12 7.12 0 0 0 19 12v-2"></path>
+                        <path d="M5 10v2a7 7 0 0 0 12 5"></path>
+                        <path d="M15 9.34V4a3 3 0 0 0-5.68-1.33"></path>
+                        <path d="M9 9v3a3 3 0 0 0 5.12 2.12"></path>
+                        <line x1="12" y1="19" x2="12" y2="23"></line>
+                        <line x1="8" y1="23" x2="16" y2="23"></line>
+                    </svg>
+                    Muted
+                `;
+            } else {
+                // Change button style back
+                muteBtn.classList.remove('muted');
+                muteBtn.innerHTML = `
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 极速
